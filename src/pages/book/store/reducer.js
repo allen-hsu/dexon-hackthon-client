@@ -14,7 +14,8 @@ const defaultState = fromJS({
   updateEditorContent: "", //編輯後故事的結果
   updateAllInfo: false,
   leaderboard: [], //排行榜
-  totalPartCount: 0
+  totalPartCount: 0,
+  inputValue: ""
 });
 
 const authWeb3 = (state, action) => {
@@ -49,18 +50,30 @@ export default (state = defaultState, action) => {
         pagePartStart: action.pagePartStart
       });
     case constants.TOGGLE_EDITOR:
+      let currentIndx = 0;
+      if (action.currentEditorId >= 4) {
+        currentIndx = action.currentEditorId % 4;
+      } else {
+        currentIndx = action.currentEditorId;
+      }
       return state.merge({
         toggleEditor: action.toggleEditor,
-        currentEditorId: action.currentEditorId
+        currentEditorId: currentIndx
       });
     case constants.UPDATE_EDITOR_VALUE:
       return updateEditorValue(state, action);
     case constants.UPDATE_RANK_VALUE:
+      console.log("測測", action.leaderboard);
       return state.set("leaderboard", action.leaderboard);
     case constants.TOGGLE_UPDATE_INFO:
       return state.set("updateAllInfo", action.updateAllInfo);
     case constants.GET_TOTAL_PART_COUNT:
       return state.set("totalPartCount", action.totalPartCount);
+    case constants.BUY_STORY_PART:
+      return state.merge({
+        toggleEditor: action.toggleEditor,
+        updateAllInfo: action.updateAllInfo
+      });
     default:
       return state;
   }

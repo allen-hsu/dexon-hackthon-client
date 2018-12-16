@@ -23,6 +23,7 @@ class Book extends PureComponent {
   constructor(props) {
     super(props);
     this.init = false;
+    this.update = false;
   }
   render() {
     const { web3States, rewardPool } = this.props;
@@ -33,11 +34,9 @@ class Book extends PureComponent {
             <h1>Once Upon a Time...</h1>
             <div className="info">
               總價值：163,423.5642 DEX • 已創作文字：2736238 • 獎池：{" "}
-              {rewardPool} DEX • 進行中
+              {rewardPool / 1000000000000000000} DEX • 進行中
             </div>
           </div>
-
-         
 
           {/* 書本 */}
           <PageWrapper>
@@ -64,9 +63,9 @@ class Book extends PureComponent {
                 <div className="img_box">
                   <img src={img_ico_wincup} alt="" />
                   <div className="top_rate">
-                    <b>1. Xiakecat</b> <br />
-                    34,137 個字 <br />
-                    3,124.4850 Dex
+                    <b>No.1 Xiakecat</b> <br />
+                    擁有 88 個段落
+                    <br />
                   </div>
                 </div>
                 <RankList />
@@ -89,7 +88,11 @@ class Book extends PureComponent {
         </BookWrapper>
       );
     } else {
-      return <div>等待錢包區塊鏈中</div>;
+      return (
+        <BookWrapper>
+          <div className="wait">等待錢包區塊鏈中...</div>
+        </BookWrapper>
+      );
     }
   }
 
@@ -160,9 +163,9 @@ class Book extends PureComponent {
     if (updateAllInfo) {
       console.log("更新摟~~");
       closeUpdateInfo();
-      getStoryPart(currentPageIndex, 4);
-      getCurrentReward();
-      getRank();
+      // getStoryPart(currentPageIndex, 4);
+      // getCurrentReward();
+      // getRank();
     }
   }
 

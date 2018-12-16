@@ -76,7 +76,7 @@ b {
   font-weight: 300;
   h1 {
       font-weight: 300;
-      font-size: 25px;
+      font-size: 30px;
       margin:20px 0;
   }
 }
@@ -142,12 +142,26 @@ b {
           list-style: none;
           p {
             line-height:1.3;
+            &.rank {
+              margin: 0 10px;
+              overflow:hidden;
+              white-space: pre;
+        text-overflow : ellipsis;
+            }
           }
+          
       }
       
   }
 }
 
+.wait {
+  margin: 100px auto;
+  color:#fff;
+  font-size: 40px;
+  text-align:center;
+  font-weight: 300;
+}
 
 .btn {
   &.click_prev,
@@ -162,7 +176,8 @@ b {
   }
   &.click_prev {
       background-position: left top;
-      left: -6vw;
+      right: -6vw;
+      bottom:180px;
       &:hover {
           background-position: left bottom;
       }
