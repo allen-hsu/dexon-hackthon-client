@@ -18,7 +18,7 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^4.1.1",
     "truffle-contract": "^4.0.0-beta.1",
-    "web3": "github:shayanb/web3.js#develop"
+    "web3": "1.0.0-beta.37"
   },
   "scripts": {
     "start": "react-scripts start",
